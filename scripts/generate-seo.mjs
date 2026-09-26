@@ -35,18 +35,20 @@ if (
 }
 
 const home = siteUrl.href;
-const image = new URL('images/logo-simbolo-transparente.png', siteUrl).href;
+const image = new URL('images/social-preview.jpg', siteUrl).href;
 const sitemap = new URL('sitemap.xml', siteUrl).href;
 const htmlPath = path.join(outputDir, 'index.html');
 let html = await readFile(htmlPath, 'utf8');
-const imageTag = '<meta property="og:image" content="./images/logo-simbolo-transparente.png" />';
-if (!html.includes(imageTag) || !html.includes('</head>')) {
+const imageTag = '<meta property="og:image" content="./images/social-preview.jpg" />';
+const twitterImageTag = '<meta name="twitter:image" content="./images/social-preview.jpg" />';
+if (!html.includes(imageTag) || !html.includes(twitterImageTag) || !html.includes('</head>')) {
   throw new Error('Expected SEO tags not found in the generated index.html.');
 }
 html = html.replace(imageTag, `<meta property="og:image" content="${image}" />`);
+html = html.replace(twitterImageTag, `<meta name="twitter:image" content="${image}" />`);
 html = html.replace(
   '</head>',
-  `  <link rel="canonical" href="${home}" />\n    <meta property="og:url" content="${home}" />\n    <meta name="twitter:image" content="${image}" />\n  </head>`,
+  `  <link rel="canonical" href="${home}" />\n    <meta property="og:url" content="${home}" />\n  </head>`,
 );
 await writeFile(htmlPath, html);
 await writeFile(
