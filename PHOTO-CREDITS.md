@@ -17,6 +17,10 @@ La página utiliza fotografías seleccionadas de los archivos suministrados por 
 | `infraestructura-industrial.webp` | `IMG-20260922-WA0251_1790127642601.jpg` |
 | `canalizaciones.webp` | `IMG-20260922-WA0254_1790127771910.jpg` |
 | `conexiones-electricas.webp` | `IMG-20260922-WA0249_1790127642604.jpg` |
+| `kits-solares.webp` | `IMG-20260922-WA0239_1790469925884.jpg` |
+| `camaras-radios-solares.webp` | `IMG-20260922-WA0238_1790469925899.jpg` |
+| `luminarias-solares.webp` | `IMG-20260922-WA0237_1790469925902.jpg` |
+| `linternas-solares.webp` | `IMG-20260922-WA0236_1790469925905.jpg` |
 
 `instalacion-paneles.webp` se conserva entre los recursos aportados, pero ya no se muestra en la portada.
 
@@ -40,3 +44,4 @@ Las fotografías se descargaron desde `images.pexels.com` y se almacenan localme
 
 - `public/images/addi-logo.png`: marca Addi recortada del [recurso de Comunidad Addi](https://comunidad.addi.com/assets/img/games/logo_community.png).
 - `public/images/sistecredito-logo.png`: logotipo Sistecrédito obtenido de [Seeklogo](https://images.seeklogo.com/logo-png/46/1/sistecredito-logo-png_seeklogo-469681.png) y convertido a fondo transparente.
+- `public/images/cfa-logo.png`: logotipo CFA obtenido del [sitio oficial de CFA Cooperativa Financiera](https://www.cfa.com.co/wp-content/uploads/2024/12/Logo-azul-alta.png) y recortado a sus bordes transparentes.

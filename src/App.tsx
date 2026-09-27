@@ -56,6 +56,13 @@ const services = [
   },
 ];
 
+const accessories = [
+  { image: 'kits-solares.webp', title: 'Kits y energía portátil', alt: 'Kits de iluminación, pequeños paneles y cargadores solares portátiles' },
+  { image: 'camaras-radios-solares.webp', title: 'Cámaras y radios solares', alt: 'Cámaras de vigilancia con panel solar y radios con carga solar' },
+  { image: 'luminarias-solares.webp', title: 'Luminarias y reflectores', alt: 'Reflectores, lámparas y luminarias de exterior con paneles solares' },
+  { image: 'linternas-solares.webp', title: 'Linternas y lámparas', alt: 'Linternas, lámparas portátiles y accesorios de iluminación solar' },
+];
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -190,6 +197,27 @@ function App() {
           </div>
         </section>
 
+        <section className="accessories container" id="accesorios" aria-labelledby="accessories-title">
+          <div className="accessories-heading reveal">
+            <div>
+              <span className="eyebrow section-label">Accesorios solares</span>
+              <h2 id="accessories-title" className="display">Energía útil en <em>cada detalle.</em></h2>
+            </div>
+            <p>Explore opciones de iluminación, seguridad y energía portátil. Consulte referencias y disponibilidad para su proyecto.</p>
+          </div>
+          <div className="accessories-grid">
+            {accessories.map((item, index) => (
+              <figure className="accessory-card reveal" key={item.image}>
+                <div className="accessory-image">
+                  <img src={asset(item.image)} alt={item.alt} loading="lazy" />
+                </div>
+                <figcaption><span>{String(index + 1).padStart(2, '0')}</span><strong>{item.title}</strong></figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="accessories-note">Imágenes de referencia. Consulte disponibilidad y especificaciones antes de hacer su pedido.</p>
+        </section>
+
         <section className="field-notes container" aria-labelledby="field-notes-title">
           <div className="field-notes-heading">
             <span className="eyebrow section-label">Imágenes de las soluciones</span>
@@ -239,19 +267,20 @@ function App() {
           </div>
         </section>
 
-        <section className="financing" aria-labelledby="financing-title">
+        <section className="financing" id="financiacion" aria-labelledby="financing-title">
           <div className="container financing-grid">
             <div>
               <span className="eyebrow section-label">Opciones de financiación</span>
               <h2 id="financing-title" className="display">Haga realidad su proyecto <em>con más opciones.</em></h2>
-              <p>Consulte por las opciones de financiación con Addi y Sistecrédito al solicitar su cotización. Disponibilidad y aprobación sujetas a las condiciones de cada entidad.</p>
-              <a href={`https://wa.me/573022752552?text=${encodeURIComponent('Hola, quisiera consultar opciones de financiación con Addi o Sistecrédito para mi proyecto.')}`} target="_blank" rel="noopener noreferrer" className="button-text" data-testid="link-financiacion-3c">
+              <p>Consulte por las opciones de financiación con Addi, Sistecrédito y CFA Cooperativa Financiera al solicitar su cotización. Disponibilidad y aprobación sujetas a las condiciones de cada entidad.</p>
+              <a href={`https://wa.me/573022752552?text=${encodeURIComponent('Hola, quisiera consultar opciones de financiación con Addi, Sistecrédito o CFA para mi proyecto.')}`} target="_blank" rel="noopener noreferrer" className="button-text" data-testid="link-financiacion-3c">
                 Consultar financiación <ArrowUpRight size={16} strokeWidth={1.8} />
               </a>
             </div>
             <div className="financing-options" aria-label="Entidades de financiación">
               <div className="finance-name"><img src={asset('addi-logo.png')} alt="Addi" loading="lazy" /></div>
               <div className="finance-name"><img src={asset('sistecredito-logo.png')} alt="Sistecrédito" loading="lazy" /></div>
+              <div className="finance-name"><img src={asset('cfa-logo.png')} alt="CFA Cooperativa Financiera" loading="lazy" /></div>
             </div>
           </div>
         </section>
