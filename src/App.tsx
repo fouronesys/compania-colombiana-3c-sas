@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { ArrowDownRight, ArrowRight, ArrowUpRight, Menu, X, Zap, Sun, Network, Ruler } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowDownRight, ArrowLeft, ArrowRight, ArrowUpRight, Maximize2, Menu, X, Zap, Sun, Network, Ruler } from 'lucide-react';
 
 const asset = (name: string) => `${import.meta.env.BASE_URL}images/${name}`;
 const whatsapp = 'https://wa.me/573022752552?text=Hola%2C%20quisiera%20consultar%20sobre%20los%20servicios%20de%20Compa%C3%B1%C3%ADa%20Colombiana%203C%20SAS.';
@@ -63,8 +63,52 @@ const accessories = [
   { image: 'linternas-solares.webp', title: 'Linternas y lámparas', alt: 'Linternas, lámparas portátiles y accesorios de iluminación solar' },
 ];
 
+const galleryGroups = [
+  {
+    title: 'Sistemas fotovoltaicos',
+    description: 'Paneles y componentes presentados en distintas configuraciones visuales.',
+    items: [
+      { code: '0266', title: 'Paneles y equipos de conversión', alt: 'Imagen de referencia de paneles fotovoltaicos, equipos de conversión y cableado' },
+      { code: '0267', title: 'Paneles con componentes eléctricos', alt: 'Imagen de referencia de paneles fotovoltaicos junto a equipos eléctricos y conectores' },
+      { code: '0268', title: 'Conjunto de paneles y accesorios', alt: 'Imagen de referencia de paneles oscuros, equipo eléctrico y accesorios de conexión' },
+      { code: '0270', title: 'Paneles y equipo de control', alt: 'Imagen de referencia de paneles fotovoltaicos y equipo de control con accesorios' },
+      { code: '0272', title: 'Paneles con equipo complementario', alt: 'Imagen de referencia de paneles azules, equipo eléctrico y rollos de cable' },
+      { code: '0273', title: 'Conjunto fotovoltaico de referencia', alt: 'Imagen de referencia de paneles oscuros, equipos eléctricos y cableado' },
+    ],
+  },
+  {
+    title: 'Iluminación solar exterior',
+    description: 'Opciones visuales para espacios abiertos, fachadas y recorridos.',
+    items: [
+      { code: '0283', title: 'Luminarias de muro', alt: 'Imagen de referencia de luminarias solares instaladas en un muro exterior' },
+      { code: '0284', title: 'Luminarias tipo reflector', alt: 'Imagen de referencia de varias luminarias solares rectangulares para exterior' },
+      { code: '0285', title: 'Luminaria para poste', alt: 'Imagen de referencia de una luminaria solar de exterior montada sobre un soporte' },
+      { code: '0286', title: 'Luces para jardín', alt: 'Imagen de referencia de pequeñas luces solares de colores en un jardín nocturno' },
+      { code: '0287', title: 'Formatos de luminaria exterior', alt: 'Imagen de referencia de luminarias solares rectangulares en diferentes formatos' },
+      { code: '0289', title: 'Luminaria exterior instalada', alt: 'Imagen de referencia de una luminaria solar exterior sobre un brazo de soporte' },
+    ],
+  },
+  {
+    title: 'Iluminación solar decorativa',
+    description: 'Referencias de luz ambiental para jardines y espacios exteriores.',
+    items: [
+      { code: '0276', title: 'Tira de luces decorativas', alt: 'Imagen de referencia de una tira de luces decorativas y su pequeño panel solar' },
+      { code: '0277', title: 'Luces en forma de estrella', alt: 'Imagen de referencia de luces decorativas multicolor con forma de estrella' },
+      { code: '0278', title: 'Guirnalda de luces de colores', alt: 'Imagen de referencia de una guirnalda solar con luces de varios colores' },
+      { code: '0279', title: 'Luces para ambientación', alt: 'Imagen de referencia de luces decorativas de colores, cable y estaca solar' },
+      { code: '0280', title: 'Iluminación para fachada', alt: 'Imagen de referencia de luces decorativas cálidas sobre una fachada y un control' },
+      { code: '0281', title: 'Luces colgantes para árboles', alt: 'Imagen de referencia de luces azules colgando de un árbol y pequeño panel solar' },
+      { code: '0282', title: 'Luces decorativas de jardín', alt: 'Imagen de referencia de luces cálidas en forma de esfera sobre un jardín' },
+    ],
+  },
+];
+
+const galleryItems = galleryGroups.flatMap((group) => group.items.map((item) => ({ ...item, group: group.title })));
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const galleryDialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     const elements = document.querySelectorAll('.reveal');
@@ -84,7 +128,17 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (selectedImage !== null && !galleryDialogRef.current?.open) {
+      galleryDialogRef.current?.showModal();
+    }
+  }, [selectedImage]);
+
   const closeMenu = () => setMenuOpen(false);
+  const openImage = (index: number) => {
+    setSelectedImage(index);
+  };
+  const activeImage = selectedImage === null ? null : galleryItems[selectedImage];
 
   return (
     <div className="site" id="inicio">
@@ -193,7 +247,50 @@ function App() {
               <div className="feature-rule" />
               <div className="feature-detail"><strong>02</strong><span>Calentadores solares de agua: 200, 300 y 400 litros.</span></div>
               <a href="#contacto" className="button-text feature-link" data-testid="link-solar-contacto">Consultar una solución solar <ArrowUpRight size={16} strokeWidth={1.8} /></a>
+              <div className="feature-catalog-jump"><a href="#catalogo-solar" data-testid="link-catalogo-solar">Explorar la galería de equipos <ArrowDownRight size={16} strokeWidth={1.7} /></a></div>
             </div>
+          </div>
+        </section>
+
+        <section className="solar-catalog" id="catalogo-solar" aria-labelledby="catalog-title">
+          <div className="container">
+            <div className="catalog-intro reveal">
+              <div>
+                <span className="eyebrow section-label">Galería / Energía solar</span>
+                <h2 id="catalog-title" className="display">Una mirada a las <em>posibilidades.</em></h2>
+              </div>
+              <div className="catalog-intro-aside">
+                <p>Explore referencias de sistemas fotovoltaicos e iluminación solar. Abra cualquier imagen para verla completa.</p>
+                <div className="catalog-disclaimer" data-testid="text-aviso-catalogo">Estas imágenes son de referencia, no un inventario garantizado. Consulte disponibilidad y especificaciones antes de solicitar su cotización.</div>
+              </div>
+            </div>
+            {galleryGroups.map((group, groupIndex) => (
+              <div className="catalog-group" key={group.title} aria-labelledby={`catalog-group-${groupIndex}`}>
+                <div className="catalog-group-heading">
+                  <span className="catalog-group-number">{String(groupIndex + 1).padStart(2, '0')} /</span>
+                  <h3 id={`catalog-group-${groupIndex}`}>{group.title}</h3>
+                  <p>{group.description}</p>
+                </div>
+                <div className="catalog-grid">
+                  {group.items.map((item) => {
+                    const imageIndex = galleryItems.findIndex((image) => image.code === item.code);
+                    return (
+                      <figure className="catalog-card" key={item.code} data-testid={`card-equipo-solar-${item.code}`}>
+                        <button type="button" className="catalog-card-button" onClick={() => openImage(imageIndex)} aria-label={`Ver imagen ampliada: ${item.title}`} data-testid={`button-ver-equipo-${item.code}`}>
+                          <span className="catalog-image">
+                            <img src={asset(`equipo-solar-${item.code}.webp`)} alt={item.alt} loading="lazy" decoding="async" />
+                          </span>
+                          <span className="catalog-card-caption">
+                            <span><strong>{item.title}</strong><small>Imagen de referencia</small></span>
+                            <Maximize2 size={18} strokeWidth={1.5} aria-hidden="true" />
+                          </span>
+                        </button>
+                      </figure>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -305,6 +402,46 @@ function App() {
           </div>
         </section>
       </main>
+
+      <dialog
+        ref={galleryDialogRef}
+        className="catalog-dialog"
+        aria-label="Imagen ampliada de la galería solar"
+        onClose={() => setSelectedImage(null)}
+        onKeyDown={(event) => {
+          if (selectedImage === null) return;
+          if (event.key === 'ArrowLeft' && selectedImage > 0) {
+            event.preventDefault();
+            setSelectedImage(selectedImage - 1);
+          }
+          if (event.key === 'ArrowRight' && selectedImage < galleryItems.length - 1) {
+            event.preventDefault();
+            setSelectedImage(selectedImage + 1);
+          }
+        }}
+      >
+        {activeImage && (
+          <div className="catalog-dialog-content">
+            <div className="catalog-dialog-top">
+              <span>{activeImage.group} · {String(selectedImage! + 1).padStart(2, '0')} / {galleryItems.length}</span>
+              <button type="button" className="catalog-dialog-close" onClick={() => galleryDialogRef.current?.close()} aria-label="Cerrar imagen ampliada" data-testid="button-cerrar-imagen"><X size={22} strokeWidth={1.6} /></button>
+            </div>
+            <div className="catalog-dialog-image">
+              <img src={asset(`equipo-solar-${activeImage.code}.webp`)} alt={activeImage.alt} />
+            </div>
+            <div className="catalog-dialog-bottom">
+              <div>
+                <h3>{activeImage.title}</h3>
+                <p>Imagen de referencia. Consulte disponibilidad y especificaciones.</p>
+              </div>
+              <div className="catalog-dialog-controls" aria-label="Navegación de imágenes">
+                <button type="button" onClick={() => setSelectedImage((index) => index === null ? null : Math.max(0, index - 1))} disabled={selectedImage === 0} aria-label="Imagen anterior" data-testid="button-imagen-anterior"><ArrowLeft size={19} strokeWidth={1.7} /></button>
+                <button type="button" onClick={() => setSelectedImage((index) => index === null ? null : Math.min(galleryItems.length - 1, index + 1))} disabled={selectedImage === galleryItems.length - 1} aria-label="Imagen siguiente" data-testid="button-imagen-siguiente"><ArrowRight size={19} strokeWidth={1.7} /></button>
+              </div>
+            </div>
+          </div>
+        )}
+      </dialog>
 
       <footer className="footer">
         <div className="container">

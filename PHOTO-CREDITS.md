@@ -22,6 +22,30 @@ La página utiliza fotografías seleccionadas de los archivos suministrados por 
 | `luminarias-solares.webp` | `IMG-20260922-WA0237_1790469925902.jpg` |
 | `linternas-solares.webp` | `IMG-20260922-WA0236_1790469925905.jpg` |
 
+Las siguientes imágenes de equipos solares también fueron suministradas por el usuario. Son referencias visuales agrupadas por tipo, no una confirmación de inventario, capacidades técnicas o proyectos ejecutados:
+
+| Archivo en la página | Imagen enviada | Grupo |
+| --- | --- | --- |
+| `equipo-solar-0266.webp` | `IMG-20260922-WA0266_1790560877720.jpg` | Sistemas fotovoltaicos |
+| `equipo-solar-0267.webp` | `IMG-20260922-WA0267_1790560877694.jpg` | Sistemas fotovoltaicos |
+| `equipo-solar-0268.webp` | `IMG-20260922-WA0268_1790560877724.jpg` | Sistemas fotovoltaicos |
+| `equipo-solar-0270.webp` | `IMG-20260922-WA0270_1790560877708.jpg` | Sistemas fotovoltaicos |
+| `equipo-solar-0272.webp` | `IMG-20260922-WA0272_1790560877712.jpg` | Sistemas fotovoltaicos |
+| `equipo-solar-0273.webp` | `IMG-20260922-WA0273_1790560877716.jpg` | Sistemas fotovoltaicos |
+| `equipo-solar-0283.webp` | `IMG-20260922-WA0283_1790560877737.jpg` | Iluminación solar exterior |
+| `equipo-solar-0284.webp` | `IMG-20260922-WA0284_1790560877732.jpg` | Iluminación solar exterior |
+| `equipo-solar-0285.webp` | `IMG-20260922-WA0285_1790560877727.jpg` | Iluminación solar exterior |
+| `equipo-solar-0286.webp` | `IMG-20260922-WA0286_1790560877786.jpg` | Iluminación solar exterior |
+| `equipo-solar-0287.webp` | `IMG-20260922-WA0287_1790560877742.jpg` | Iluminación solar exterior |
+| `equipo-solar-0289.webp` | `IMG-20260922-WA0289_1790560877748.jpg` | Iluminación solar exterior |
+| `equipo-solar-0276.webp` | `IMG-20260922-WA0276_1790560877781.jpg` | Iluminación solar decorativa |
+| `equipo-solar-0277.webp` | `IMG-20260922-WA0277_1790560877752.jpg` | Iluminación solar decorativa |
+| `equipo-solar-0278.webp` | `IMG-20260922-WA0278_1790560877789.jpg` | Iluminación solar decorativa |
+| `equipo-solar-0279.webp` | `IMG-20260922-WA0279_1790560877760.jpg` | Iluminación solar decorativa |
+| `equipo-solar-0280.webp` | `IMG-20260922-WA0280_1790560877756.jpg` | Iluminación solar decorativa |
+| `equipo-solar-0281.webp` | `IMG-20260922-WA0281_1790560877777.jpg` | Iluminación solar decorativa |
+| `equipo-solar-0282.webp` | `IMG-20260922-WA0282_1790560877770.jpg` | Iluminación solar decorativa |
+
 `instalacion-paneles.webp` se conserva entre los recursos aportados, pero ya no se muestra en la portada.
 
 Las siguientes fotografías de Pexels se conservan en el proyecto. La página muestra `hero-solar-alta-calidad.webp`, `topografia.jpg` y `planos.jpg`; son imágenes ilustrativas y no representan proyectos propios de Compañía Colombiana 3C SAS:
